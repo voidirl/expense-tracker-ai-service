@@ -30,7 +30,7 @@ def chat (req: ChatRequest):
         expense_context += f"Total spent: ₹{total}"
 
     response = client.chat.completions.create(
-        model="llama3-8b-8192",
+        model="llama-3.3-70b-versatile",
         messages=[{
             "role" : "system",
             "content": f"You're a smart financial advisor for an expense tracker app. Help users understand their spending habits, give budget advice, and answer finance-related questions. Be concise and helpful.{expense_context}"
