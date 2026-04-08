@@ -20,6 +20,6 @@ uvicorn main:app --reload --port 8000
 ## Related
 - [Backend](https://github.com/voidirl/ai-expense-tracker-backend)
 - [Frontend](https://github.com/voidirl/ai-expense-tracker-frontend)
-- 
+- [AI-Service](https"//github.com/voidirl/expense-ai-service)
 ## 🌐 Live Demo
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-voidledger.vercel.app-black?style=for-the-badge&logo=vercel)](https://voidledger.vercel.app)
