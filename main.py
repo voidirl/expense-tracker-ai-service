@@ -13,6 +13,7 @@ app.add_middleware(CORSMiddleware,
                                   "http://localhost:3000",
                                   "https://ai-expense-tracker-frontend-mocha.vercel.app",
                                   "https://voidledger.vercel.app"],
+                   allow_credentials=True,
                    allow_methods=["*"],
                    allow_headers=["*"],)
 
