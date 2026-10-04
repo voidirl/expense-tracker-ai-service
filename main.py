@@ -12,6 +12,9 @@ app.add_middleware(CORSMiddleware,
                    allow_methods=["*"],
                    allow_headers=["*"],)
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# Hardcoding the model meant one Groq account-side change could 500 every
+# request. llama-3.3-70b-versatile was retired, so this is overridable instead.
+MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 class ChatRequest(BaseModel):
     message: str
     expenses: list=[]
@@ -25,7 +28,7 @@ def chat(req: ChatRequest):
             expense_context += f"- {e['title']} | {e['category']} | ₹{e['amount']} | {e['expenseDate']}\n"
         expense_context += f"Total spent: ₹{total}"
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model=MODEL,
         messages=[{
             "role": "system",
             "content": f"You're a smart financial advisor for an expense tracker app. Help users understand their spending habits, give budget advice, and answer finance-related questions. Be concise and helpful.{expense_context}"
